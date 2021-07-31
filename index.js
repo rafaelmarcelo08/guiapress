@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 
 const connection = require('./src/database/database');
+const categoryController = require('./src/categories/Controllers/CategoryController');
+const articleController = require('./src/articles/Controllers/ArticleController');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -18,9 +20,8 @@ connection.authenticate()
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
+app.use('/', categoryController);
+app.use('/', articleController);
 
 app.listen(8080, () => {
     console.log('App rodando');
