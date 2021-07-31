@@ -27,4 +27,4 @@ app.use('/', articleController);
 
 app.listen(8080, () => {
     console.log('App rodando');
-})
+});
