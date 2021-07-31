@@ -5,6 +5,7 @@ const connection = require('./src/database/database');
 const categoryController = require('./src/categories/Controllers/CategoryController');
 const articleController = require('./src/articles/Controllers/ArticleController');
 const Category = require('./src/categories/model/Category');
+const Article = require('./src/articles/model/Article');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
