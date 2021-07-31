@@ -4,13 +4,14 @@ const app = express();
 const connection = require('./src/database/database');
 const categoryController = require('./src/categories/Controllers/CategoryController');
 const articleController = require('./src/articles/Controllers/ArticleController');
+const Category = require('./src/categories/model/Category');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/src/views');
-
+ 
 connection.authenticate()
     .then(() => {
         console.log('Autenticado com sucesso!');
