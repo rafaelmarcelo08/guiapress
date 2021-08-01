@@ -1,0 +1,45 @@
+<%- include('../../partials/header.ejs') %>
+    <title>Lista de Categorias</title>
+    <!-- <link rel="stylesheet" href="/css/admin/categories/new.css"> -->
+
+    </head>
+
+    <body>
+        <%- include('../../partials/navbar.ejs') %>
+            <div class="container">
+                <hr />
+                <h2>Lista de categorias</h2>
+                <hr />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Slug</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% categories.forEach((category)=> {%>
+
+                            <tr>
+                                <th>
+                                    <%= category.id%>
+                                </th>
+                                <th>
+                                    <%= category.title%>
+                                </th>
+                                <th>
+                                    <%= category.slug%>
+                                </th>
+                                <th>Acoes</th>
+                            </tr>
+                            <%})%>
+                    </tbody>
+                </table>
+            </div>
+
+    </body>
+
+    <%- include('../../partials/footer.ejs') %>
