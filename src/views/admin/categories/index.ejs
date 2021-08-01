@@ -10,7 +10,12 @@
                 <hr />
                 <h2>Lista de categorias</h2>
                 <hr />
-
+                <a
+                class="btn btn-success" 
+                href="/admin/categories/new">Criar uma nova categoria</a>
+               
+                <hr />
+                
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -33,7 +38,10 @@
                                 <th>
                                     <%= category.slug%>
                                 </th>
-                                <th>Acoes</th>
+                                <th>
+                                  <button class="btn btn-warning">Alterar</button>
+                                  <button class="btn btn-danger">Excluir</button>  
+                                </th>
                             </tr>
                             <%})%>
                     </tbody>
