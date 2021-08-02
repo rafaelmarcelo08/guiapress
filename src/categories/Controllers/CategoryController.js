@@ -19,12 +19,11 @@ router.post('/categories/save', (req, res) => {
             }
         ).then(() => {
             console.log('Categoria salva.');
-            //res.redirect('/');
         }).catch((error) => {
             console.log(error);
         });
     } else {
-        res.redirect('admin/categories/new');
+        res.redirect('/admin/categories/new');
     }
 });
 
@@ -40,6 +39,31 @@ router.get('/admin/categories', (req, res) => {
             }
         );
     });
+});
+
+router.post('/categories/delete', (req, res) => {
+    let { id } = req.body;
+
+    if (id != undefined) {
+        if (!isNaN(id)) {
+
+            Category.destroy(
+                {
+                    where: {
+                        id: id
+                    }
+                }
+            ).then(() => {
+                res.redirect('/admin/categories');
+            });
+
+        } else {
+            res.redirect('/admin/categories');
+        }
+    } else {
+        res.redirect('/admin/categories');
+    }
+
 });
 
 module.exports = router;

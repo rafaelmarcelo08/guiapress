@@ -26,9 +26,9 @@ Article.belongsTo(Category);
 /** 1 X N */
 Category.hasMany(Article);
 
-Article.sync({ force: true })
+Article.sync({ force: false })
     .then(() => {
-        console.log('Tabela ');
+        console.log('Criada a tabela artigos. ');
     });
 
 module.exports = Article;

@@ -10,12 +10,10 @@
                 <hr />
                 <h2>Lista de categorias</h2>
                 <hr />
-                <a
-                class="btn btn-success" 
-                href="/admin/categories/new">Criar uma nova categoria</a>
-               
+                <a class="btn btn-success" href="/admin/categories/new">Criar uma nova categoria</a>
+
                 <hr />
-                
+
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -39,8 +37,12 @@
                                     <%= category.slug%>
                                 </th>
                                 <th>
-                                  <button class="btn btn-warning">Alterar</button>
-                                  <button class="btn btn-danger">Excluir</button>  
+                                    <button class="btn btn-warning">Alterar</button>
+
+                                    <form action="/categories/delete" method="POST" style="display: inline;">
+                                        <input type="hidden" value="<%= category.id%>" name="id">
+                                        <button class="btn btn-danger">Excluir</button>
+                                    </form>
                                 </th>
                             </tr>
                             <%})%>
