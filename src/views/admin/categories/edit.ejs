@@ -1,0 +1,31 @@
+<%- include('../../partials/header.ejs') %>
+    <title>Cadastrar Categoria</title>
+
+    <link rel="stylesheet" href="/css/admin/categories/edit.css">
+    </head>
+
+    <body>
+        <%- include('../../partials/navbar.ejs') %>
+
+            <div class="container container-category-edit">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Edição de Categoria</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="/categories/save" method="POST">
+                            <input type="text" name=title placeholder="Defina o título da categoria"
+                                class="form-control" value="<%= category.title%>">
+                            <button type="submit" class="btn btn-success btn-editar">Atualizar</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+    </body>
+
+    <%- include('../../partials/footer.ejs') %>

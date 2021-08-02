@@ -19,6 +19,7 @@ router.post('/categories/save', (req, res) => {
             }
         ).then(() => {
             console.log('Categoria salva.');
+            res.redirect('/admin/categories');
         }).catch((error) => {
             console.log(error);
         });
@@ -64,6 +65,34 @@ router.post('/categories/delete', (req, res) => {
         res.redirect('/admin/categories');
     }
 
+});
+
+router.get('/admin/categories/edit/:id', (req, res) => {
+    let { id } = req.params;
+
+    if (isNaN(id)) {
+        res.redirect('/admin/categories');
+    }
+
+    Category.findByPk(id,
+        {
+            raw: true,
+        }
+    ).then((category) => {
+        if (category != undefined) {
+
+            res.render('admin/categories/edit',
+                {
+                    category: category
+                }
+            );
+        } else {
+            res.redirect('/admin/categories');
+        }
+    }).catch((error) => {
+        console.log(error);
+        res.redirect('/admin/categories');
+    });
 });
 
 module.exports = router;
