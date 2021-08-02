@@ -9,7 +9,7 @@
         <%- include('../../partials/navbar.ejs') %>
 
             <div class="container container-articles">
- 
+
                 <div class="card">
                     <div class="card-header">
                         <h2>Cadastro de uma artigo</h2>
@@ -17,15 +17,11 @@
 
                     <div class="card-body">
                         <form action="/categories/save" method="POST">
-                            <input type="text" name=title placeholder="Defina o título do artigo"
-                                class="form-control">
+                            <input type="text" name=title placeholder="Defina o título do artigo" class="form-control">
 
                             <label class="label-artigo">Descreve seu artigo:</label>
-                             <textarea 
-                             name="body" 
-                             rows="3" 
-                             class="form-control "
-                             placeholder="Escreva o artigo aqui"></textarea>   
+                            <textarea name="body" rows="3" class="form-control " placeholder="Escreva o artigo aqui"
+                                id="article"></textarea>
                             <button type="submit" class="btn btn-success btn-cadastrar">Cadastrar</button>
                         </form>
                     </div>
@@ -37,3 +33,18 @@
     </body>
 
     <%- include('../../partials/footer.ejs') %>
+
+        <script src="/tinymce/tinymce.min.js">
+        </script>
+
+        <script>
+            tinymce.init(
+                {
+                    selector: "#article",
+                    plugins: [
+                        'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+                    ],
+                    language: 'pt_BR'
+                }
+            );
+        </script>
