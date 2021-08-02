@@ -1,0 +1,16 @@
+.container-articles {
+    margin-top: 50px;
+}
+
+.btn-cadastrar {
+    margin: 10px 0;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.label-artigo {
+    font-weight: bolder;
+    margin: 10px 0;
+}
