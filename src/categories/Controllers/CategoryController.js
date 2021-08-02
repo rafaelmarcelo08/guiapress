@@ -95,4 +95,24 @@ router.get('/admin/categories/edit/:id', (req, res) => {
     });
 });
 
+router.post('/categories/update', (req, res) => {
+    let { id } = req.body;
+    let { title } = req.body;
+
+    Category.update(
+        {
+            title: title,
+            slug: slugify(title)
+        },
+        {
+            where: {
+                id: id
+            }
+        }
+    ).then(() => {
+        res.redirect('/admin/categories');
+    });
+
+});
+
 module.exports = router;
