@@ -6,7 +6,7 @@ const Category = require('../../categories/model/Category');
 const Article = require('../model/Article');
 
 router.get('/admin/article', (req, res) => {
-    res.send('rota de articles');
+    res.render('admin/articles/index');
 });
 
 router.get('/admin/articles/new', (req, res) => {
