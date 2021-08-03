@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/src/views');
- 
+
 connection.authenticate()
     .then(() => {
         console.log('Autenticado com sucesso!');
@@ -24,6 +24,20 @@ app.use(express.static('public'));
 
 app.use('/', categoryController);
 app.use('/', articleController);
+
+app.get('/', (req, res) => {
+    Article.findAll(
+        {
+            raw: true
+        }
+    ).then((articles) => {
+        res.render('index',
+            {
+                articles: articles
+            }
+        );
+    });
+});
 
 app.listen(8080, () => {
     console.log('App rodando');

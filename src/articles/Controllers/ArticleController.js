@@ -16,7 +16,6 @@ router.get('/admin/articles', (req, res) => {
             ]
         }
     ).then((articles) => {
-        console.log(articles);
         res.render('admin/articles/index',
             {
                 articles: articles
