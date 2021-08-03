@@ -11,7 +11,7 @@ router.get('/admin/articles', (req, res) => {
             raw: false,
             include: [
                 {
-                    model: Category, 
+                    model: Category,
                 }
             ]
         }
@@ -56,6 +56,29 @@ router.post('/articles/save', (req, res) => {
         console.log('Artigo salvo com sucesso.');
         res.redirect('/admin/articles');
     });
+});
+
+router.post('/articles/delete', (req, res) => {
+    let { id } = req.body;
+
+    if(id != undefined){
+        if(!isNaN(id)){
+            Article.destroy(
+                {
+                    where: {
+                        id: id
+                    }
+                }
+            ).then(() => {
+                console.log('Artigo deletado.');
+                res.redirect('/admin/articles');
+            });
+        }else {
+            res.redirect('/admin/articles');
+        }
+    }else {
+        res.redirect('/admin/articles');  
+    }
 });
 
 module.exports = router;
