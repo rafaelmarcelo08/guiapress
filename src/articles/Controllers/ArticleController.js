@@ -8,9 +8,15 @@ const Article = require('../model/Article');
 router.get('/admin/articles', (req, res) => {
     Article.findAll(
         {
-            raw: true
+            raw: false,
+            include: [
+                {
+                    model: Category, 
+                }
+            ]
         }
     ).then((articles) => {
+        console.log(articles);
         res.render('admin/articles/index',
             {
                 articles: articles
