@@ -5,7 +5,7 @@ const slugify = require('slugify');
 const Category = require('../../categories/model/Category');
 const Article = require('../model/Article');
 
-router.get('/admin/article', (req, res) => {
+router.get('/admin/articles', (req, res) => {
     res.render('admin/articles/index');
 });
 
@@ -38,7 +38,7 @@ router.post('/articles/save', (req, res) => {
         }
     ).then(() => {
         console.log('Artigo salvo com sucesso.');
-        res.redirect('/admin/article');
+        res.redirect('/admin/articles');
     });
 });
 
