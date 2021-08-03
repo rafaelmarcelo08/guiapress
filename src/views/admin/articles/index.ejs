@@ -1,6 +1,6 @@
 <%- include('../../partials/header.ejs') %>
     <title>Lista de artigos</title>
-   
+
     <link rel="stylesheet" href="/css/admin/articles/index.css">
     </head>
 
@@ -25,7 +25,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <% articles.forEach((article)=> { %>
+                            <td>
+                                <%= article.id%>
+                            </td>
+                            <td>
+                                <%= article.title%>
+                            </td>
+                            <td>
+                                <%= article.slug%>
+                            </td>
+                            <td>
+                                <%= article.categoryId%>
+                            </td>
+                            <td>
+                                Açoes
+                            </td>
+
+                            <% })%>
                     </tbody>
                 </table>
             </div>
@@ -42,6 +59,6 @@
 
                 if (confirma) {
                     form.submit();
-                } 
+                }
             }
         </script>

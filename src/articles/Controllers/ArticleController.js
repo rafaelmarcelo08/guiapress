@@ -6,7 +6,17 @@ const Category = require('../../categories/model/Category');
 const Article = require('../model/Article');
 
 router.get('/admin/articles', (req, res) => {
-    res.render('admin/articles/index');
+    Article.findAll(
+        {
+            raw: true
+        }
+    ).then((articles) => {
+        res.render('admin/articles/index',
+            {
+                articles: articles
+            }
+        );
+    });
 });
 
 router.get('/admin/articles/new', (req, res) => {
