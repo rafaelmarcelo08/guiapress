@@ -22,6 +22,16 @@
                             <label class="label-artigo">Descreve seu artigo:</label>
                             <textarea name="body" rows="3" class="form-control " placeholder="Escreva o artigo aqui"
                                 id="article"></textarea>
+
+                            <label class="title-select">Selecione a categoria:</label>
+
+                            <select name='category' class="form-control">
+                                <% categories.forEach((category)=> {%>
+                                    <option value="<%= category.id%>">
+                                        <%= category.title%>
+                                    </option>
+                                    <%})%>
+                            </select>
                             <button type="submit" class="btn btn-success btn-cadastrar">Cadastrar</button>
                         </form>
                     </div>
