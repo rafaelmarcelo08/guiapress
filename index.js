@@ -34,11 +34,18 @@ app.get('/', (req, res) => {
             ]
         }
     ).then((articles) => {
-        res.render('index',
+        Category.findAll(
             {
-                articles: articles
+                raw: true,
             }
-        );
+        ).then((categories) => {
+            res.render('index',
+                {
+                    articles: articles,
+                    categories: categories
+                }
+            );
+        });
     });
 });
 
@@ -54,11 +61,21 @@ app.get('/:slug', (req, res) => {
         }
     ).then((article) => {
         if (article != undefined) {
-            res.render('article',
+            Category.findAll(
                 {
-                    article: article
+                    raw: true
                 }
-            );
+            ).then((categories) => {
+                res.render('article',
+                    {
+                        article: article,
+                        categories: categories
+                    }
+                );
+            }).catch((error) => {
+                console.log(error);
+                res.redirect('/');
+            });
         } else {
             res.redirect('/');
         }
