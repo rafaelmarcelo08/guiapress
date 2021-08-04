@@ -39,6 +39,33 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/:slug', (req, res) => {
+    let { slug } = req.params;
+
+    Article.findOne(
+        {
+            raw: true,
+            where: {
+                slug: slug
+            }
+        }
+    ).then((article) => {
+        if (article != undefined) {
+            res.render('article',
+                {
+                    article: article
+                }
+            );
+        } else {
+            res.redirect('/');
+        }
+    }).catch((error) => {
+        console.log(error);
+        res.redirect('/');
+    });
+});
+
+
 app.listen(8080, () => {
     console.log('App rodando');
 });
