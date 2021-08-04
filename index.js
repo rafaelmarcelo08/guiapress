@@ -28,7 +28,10 @@ app.use('/', articleController);
 app.get('/', (req, res) => {
     Article.findAll(
         {
-            raw: true
+            raw: true,
+            order: [
+                ['createdAt', 'DESC']
+            ]
         }
     ).then((articles) => {
         res.render('index',
