@@ -60,8 +60,8 @@ router.post('/articles/save', (req, res) => {
 router.post('/articles/delete', (req, res) => {
     let { id } = req.body;
 
-    if(id != undefined){
-        if(!isNaN(id)){
+    if (id != undefined) {
+        if (!isNaN(id)) {
             Article.destroy(
                 {
                     where: {
@@ -72,11 +72,58 @@ router.post('/articles/delete', (req, res) => {
                 console.log('Artigo deletado.');
                 res.redirect('/admin/articles');
             });
-        }else {
+        } else {
             res.redirect('/admin/articles');
         }
-    }else {
-        res.redirect('/admin/articles');  
+    } else {
+        res.redirect('/admin/articles');
+    }
+});
+
+router.get('/admin/articles/edit/:id', (req, res) => {
+    let { id } = req.params;
+
+    if (id != undefined) {
+        if (!isNaN(id)) {
+
+            Article.findByPk(
+                id,
+                {
+                    raw: true
+                }
+            )
+                .then((article) => {
+                    if (article != undefined) {
+                        
+                        Category.findAll(
+                            {
+                                raw: true
+                            }
+                        ).then((categories) => {
+                            if (categories != undefined) {
+                                res.render('admin/articles/edit',
+                                    {
+                                        article: article,
+                                        categories: categories
+                                    }
+                                );
+                            } else {
+                                res.redirect('/');
+                            }
+                        });
+
+                    } else {
+                        res.redirect('/');
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                    res.redirect('/');
+                });
+        } else {
+            res.redirect('/admin/articles');
+        }
+    } else {
+        res.redirect('/admin/articles');
     }
 });
 

@@ -85,10 +85,10 @@ app.get('/:slug', (req, res) => {
     });
 });
 
-app.get('/category/:slug', (req, res) => {
+ app.get('/category/:slug', (req, res) => {
     let { slug } = req.params;
 
-    Category.findOne(
+     Category.findOne(
         {
             where: {
                 slug: slug
