@@ -182,10 +182,18 @@ router.get('/articles/pages/:num', (req, res) => {
                 next: next,
                 ...articles
             }
-
-            res.json(result);
+            
+            Category.findAll({
+                raw: true
+            }).then((categories) => {
+                res.render('admin/articles/page',
+                {
+                    result: result,
+                    categories: categories
+                }
+            );
+            });
         });
-
 });
 
 module.exports = router;
