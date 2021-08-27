@@ -150,7 +150,41 @@ router.post('/articles/update', (req, res) => {
             console.log(error);
             res.redirect('/');
         });
+});
 
+router.get('/articles/pages/:num', (req, res) => {
+    let {
+        num
+    } = req.params;
+    let page = parseInt(num);
+    let offSet = 0;
+    let next;
+
+    if (isNaN(page)) {
+        res.send('Não é um numero');
+    } else {
+        offSet = page * 4;
+    }
+
+    Article.findAndCountAll({
+            limit: 4,
+            offset: offSet
+        })
+        .then((articles) => {
+
+            if (((page * 4) + 4) < articles.count) {
+                next = true;
+            } else {
+                next = false;
+            }
+
+            let result = {
+                next: next,
+                ...articles
+            }
+
+            res.json(result);
+        });
 
 });
 
