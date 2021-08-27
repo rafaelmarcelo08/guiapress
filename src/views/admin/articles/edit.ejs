@@ -16,8 +16,12 @@
             </div>
 
             <div class="card-body">
-                <form action="/articles/save" method="POST">
-                    <input type="text" name=title placeholder="Defina o título do artigo" class="form-control">
+                <form action="/articles/update" method="POST">
+                    <input type="hidden" value='<%=article.id%>' name="id">
+                    <input type="text" name=title 
+                    placeholder="Defina o título do artigo" 
+                    class="form-control"
+                    value='<%= article.title %>'' >
 
                     <label class="label-artigo">Descreve seu artigo:</label>
                     <textarea name="body" rows="3" class="form-control " placeholder="Escreva o artigo aqui"
