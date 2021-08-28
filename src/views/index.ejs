@@ -1,28 +1,35 @@
 <%- include('partials/header.ejs') %>
-    <title>Home</title>
-    </head>
-    <link rel="stylesheet" href="/css/style.css">
+<title>Home</title>
+</head>
+<link rel="stylesheet" href="/css/style.css">
 
-    <body>
-        <%- include('partials/homenavbar.ejs') %>
-            <div class="container container-index">
-                <div class="jumbotron">
-                    <h1 class="display-4">Bem-vindo ao blog</h1>
-                    <p class="lead">Este é um simples blog.</p>
-                    <hr class="my-4">
-                    <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
-                </div>
-                <% articles.forEach((article)=>{ %>
-                    <div class="card">
-                        <div class="card-header">
-                            <%= article.title%>
-                        </div>
-                        <div class="card-body">
-                            <a class="btn btn-success" href="/<%= article.slug %> ">Ler artigo</a>
-                        </div>
-                    </div>
-                    <% }) %>
+<body>
+    <%- include('partials/homenavbar.ejs') %>
+    <div class="container container-index">
+        <div class="jumbotron">
+            <h1 class="display-4">Bem-vindo ao blog</h1>
+            <p class="lead">Este é um simples blog.</p>
+            <hr class="my-4">
+            <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
+        </div>
+        <% articles.forEach((article)=>{ %>
+        <div class="card">
+            <div class="card-header">
+                <%= article.title%>
             </div>
-    </body>
+            <div class="card-body">
+                <a class="btn btn-success" href="/<%= article.slug %> ">Ler artigo</a>
+            </div>
+        </div>
+        <% }) %>
 
-    <%- include('partials/footer.ejs') %>
+        <div class="row">
+            <div class="col">
+                <a href="/articles/pages/1" style="float:right;">Next>></a>
+                <hr>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('partials/footer.ejs') %>
